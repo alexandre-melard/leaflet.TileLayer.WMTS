@@ -26,7 +26,7 @@ L.TileLayer.WMTS = L.TileLayer.extend({
             }
         }
         this.wmtsParams = wmtsParams;
-        this.matrixIds = options.matrixIds;
+        this.matrixIds = options.matrixIds||this.getDefaultMatrix();
         L.setOptions(this, options);
     },
 
