@@ -12,6 +12,9 @@ for (var i= 0; i<22; i++) {
         topLeftCorner : new L.LatLng(20037508,-20037508)
     };
 }
+var ignKey = "YOUR_KEY";
+var layerIGNScanStd = "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD";
+var url = "http://wxs.ign.fr/" + ignKey + "/geoportail/wmts";
 
 var ign = new L.TileLayer.WMTS( url ,
                                {
