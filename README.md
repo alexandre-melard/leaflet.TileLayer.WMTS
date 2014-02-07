@@ -9,18 +9,6 @@ In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page 
 // You can get a key here: http://api.ign.fr/accueil (french)
 var ignKey = "YOUR_KEY";
 
-/**
- * the matrix3857 represents the projection 
- * for in the IGN WMTS for the google coordinates.
- */
-var matrixIds3857= new Array(22);
-for (var i= 0; i<22; i++) {
-    matrixIds3857[i]= {
-        identifier    : "" + i,
-        topLeftCorner : new L.LatLng(20037508,-20037508)
-    };
-}
-
 /** Define the layer type
  *  GEOGRAPHICALGRIDSYSTEMS.MAPS
  *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.CLASSIQUE
@@ -36,7 +24,6 @@ var ign = new L.TileLayer.WMTS( url ,
                                    layer: layerIGNScanStd,
                                    style: 'normal',
                                    tilematrixSet: "PM",
-                                   matrixIds: matrixIds3857,
                                    format: 'image/jpeg',
                                    attribution: "&copy; <a href='http://www.ign.fr'>IGN</a>"
                                }
