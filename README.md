@@ -12,8 +12,17 @@ for (var i= 0; i<22; i++) {
         topLeftCorner : new L.LatLng(20037508,-20037508)
     };
 }
+// You can get a key here: http://api.ign.fr/accueil (french)
 var ignKey = "YOUR_KEY";
+
+/** Define the layer type
+ *  GEOGRAPHICALGRIDSYSTEMS.MAPS
+ *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.CLASSIQUE
+ *  GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD
+ */
 var layerIGNScanStd = "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD";
+
+// The WMTS URL 
 var url = "http://wxs.ign.fr/" + ignKey + "/geoportail/wmts";
 
 var ign = new L.TileLayer.WMTS( url ,
@@ -27,6 +36,12 @@ var ign = new L.TileLayer.WMTS( url ,
                                }
                               );
 L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
-var baseLayers = {"Carte IGN" : ign};
-```
+
 map.addLayer(ign);
+
+var baseLayers = {"Carte IGN" : ign};
+
+L.control.layers(baseLayers, {}).addTo(map);
+
+```
+
