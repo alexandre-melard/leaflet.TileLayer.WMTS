@@ -4,7 +4,7 @@ leaflet.TileLayer.WMTS
 Add WMTS layering for leaflet
 
 In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page and use it as follow:
-
+'''
 var ign = new L.TileLayer.WMTS( url ,
                                {
                                    layer: layerIGNScanStd,
@@ -17,5 +17,5 @@ var ign = new L.TileLayer.WMTS( url ,
                               );
 L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
 var baseLayers = {"Carte IGN" : ign};
-
+'''
 map.addLayer(ign);
