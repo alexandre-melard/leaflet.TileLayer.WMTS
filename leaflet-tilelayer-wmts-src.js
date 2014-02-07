@@ -62,6 +62,21 @@ L.TileLayer.WMTS = L.TileLayer.extend({
             this.redraw();
         }
         return this;
+    },
+    
+    getDefaultMatrix : function () {
+        /**
+         * the matrix3857 represents the projection 
+         * for in the IGN WMTS for the google coordinates.
+         */
+        var matrixIds3857 = new Array(22);
+        for (var i= 0; i<22; i++) {
+            matrixIds3857[i]= {
+                identifier    : "" + i,
+                topLeftCorner : new L.LatLng(20037508,-20037508)
+            };
+        }
+        return matrixIds3857;
     }
 });
 
