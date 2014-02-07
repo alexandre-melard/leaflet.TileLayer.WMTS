@@ -5,6 +5,14 @@ Add WMTS layering for leaflet
 
 In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page and use it as follow:
 ```javascript
+
+// You can get a key here: http://api.ign.fr/accueil (french)
+var ignKey = "YOUR_KEY";
+
+/**
+ * the matrix3857 represents the projection 
+ * for in the IGN WMTS for the google coordinates.
+ */
 var matrixIds3857= new Array(22);
 for (var i= 0; i<22; i++) {
     matrixIds3857[i]= {
@@ -12,8 +20,6 @@ for (var i= 0; i<22; i++) {
         topLeftCorner : new L.LatLng(20037508,-20037508)
     };
 }
-// You can get a key here: http://api.ign.fr/accueil (french)
-var ignKey = "YOUR_KEY";
 
 /** Define the layer type
  *  GEOGRAPHICALGRIDSYSTEMS.MAPS
