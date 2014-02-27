@@ -8,10 +8,23 @@ http://canimap.melard.fr/demo
 
 
 In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page and use it as follow:
-```javascript
 
+```html
+<html>
+    <head>
+        <title>Demo leaflet.TileLayer.WMTS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>        
+        <script src="https://rawgithub.com/mylen/leaflet.TileLayer.WMTS/master/leaflet-tilelayer-wmts.js"></script>
+    </head>
+    <body>
+        <div id="map" style="height: 100%; width: 100%"></div>
+        <script>
+```javascript
 // You can get a key here: http://api.ign.fr/accueil (french)
-var ignKey = "YOUR_KEY";
+var ignKey = "lqp42l06r6pyp1ll2uuzei4r";
 
 /** Define the layer type
  *  GEOGRAPHICALGRIDSYSTEMS.MAPS
@@ -33,14 +46,18 @@ var ign = new L.TileLayer.WMTS( url ,
                                }
                               );
 var map = L.map('map').setView([48.505, 3.09], 13);
-                              
+
 L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
 
 map.addLayer(ign);
 
 var baseLayers = {"Carte IGN" : ign};
 
-L.control.layers(baseLayers, {}).addTo(map);
-
+L.control.layers(baseLayers, {}).addTo(map);            
+```
+```html
+        </script>
+    </body>
+</html>
 ```
 
