@@ -4,7 +4,7 @@ leaflet.TileLayer.WMTS
 Add WMTS layering for leaflet
 
 Demo
-http://canimap.melard.fr/
+http://canimap.melard.fr/demo
 
 
 In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page and use it as follow:
@@ -32,6 +32,8 @@ var ign = new L.TileLayer.WMTS( url ,
                                    attribution: "&copy; <a href='http://www.ign.fr'>IGN</a>"
                                }
                               );
+var map = L.map('map').setView([48.505, 3.09], 13);
+                              
 L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(map);
 
 map.addLayer(ign);
