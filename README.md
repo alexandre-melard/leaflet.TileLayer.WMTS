@@ -40,10 +40,10 @@ var url = "http://wxs.ign.fr/" + ignKey + "/geoportail/wmts";
 var ign = new L.TileLayer.WMTS( url ,
                                {
                                    layer: layerIGNScanStd,
-                                   style: 'normal',
+                                   style: "normal",
                                    tilematrixSet: "PM",
-                                   format: 'image/jpeg',
-                                   attribution: "&copy; <a href='http://www.ign.fr'>IGN</a>"
+                                   format: "image/jpeg",
+                                   attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
                                }
                               );
 var map = L.map('map').setView([48.505, 3.09], 13);
