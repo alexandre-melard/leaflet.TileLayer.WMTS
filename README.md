@@ -22,6 +22,7 @@ In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page 
     <body>
         <div id="map" style="height: 100%; width: 100%"></div>
         <script>
+```
 ```javascript
 // You can get a key here: http://api.ign.fr/accueil (french)
 var ignKey = "lqp42l06r6pyp1ll2uuzei4r";
