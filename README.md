@@ -4,7 +4,7 @@ leaflet.TileLayer.WMTS
 Add WMTS layering for leaflet
 
 Demo
-http://leaflet.melard.fr/
+http://canimap.melard.fr/demo
 
 
 In order to use this plugin, include the leaflet-tilelayer-wmts.js on your page and use it as follow:
