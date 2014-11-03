@@ -73,7 +73,7 @@ L.TileLayer.WMTS = L.TileLayer.extend({
         for (var i= 0; i<22; i++) {
             matrixIds3857[i]= {
                 identifier    : "" + i,
-                topLeftCorner : new L.LatLng(20037508,-20037508)
+                topLeftCorner : new L.LatLng(20037508.3428,-20037508.3428)
             };
         }
         return matrixIds3857;
