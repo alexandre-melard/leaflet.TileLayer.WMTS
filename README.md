@@ -1,7 +1,11 @@
 leaflet.TileLayer.WMTS
 ======================
 
-Add WMTS layering for leaflet
+Add WMTS layering for leaflet. I modified a bit the code from IGN that you can find here:
+
+http://api.ign.fr/tech-docs-js/examples/js/geoportalLeaflet.js
+
+
 
 Demo
 http://leaflet.melard.fr
