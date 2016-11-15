@@ -1,19 +1,18 @@
 L.TileLayer.WMTS = L.TileLayer.extend({
-
     defaultWmtsParams: {
         service: 'WMTS',
         request: 'GetTile',
-        version: '1.0.0',
-        layer: '',
-        style: '',
+        version: '1.1.1',
+        layers: '',
+        styles: '',
         tilematrixSet: '',
         format: 'image/jpeg'
     },
 
     initialize: function (url, options) { // (String, Object)
         this._url = url;
-        var wmtsParams = L.extend({}, this.defaultWmtsParams),
-        tileSize = options.tileSize || this.options.tileSize;
+        var wmtsParams = L.extend({}, this.defaultWmtsParams);
+        var tileSize = options.tileSize || this.options.tileSize;
         if (options.detectRetina && L.Browser.retina) {
             wmtsParams.width = wmtsParams.height = tileSize * 2;
         } else {
@@ -31,28 +30,23 @@ L.TileLayer.WMTS = L.TileLayer.extend({
     },
 
     onAdd: function (map) {
+        this._crs = this.options.crs || map.options.crs;
         L.TileLayer.prototype.onAdd.call(this, map);
     },
 
-    getTileUrl: function (tilePoint, zoom) { // (Point, Number) -> String
-        var map = this._map;
-        crs = map.options.crs;
-        tileSize = this.options.tileSize;
-        nwPoint = tilePoint.multiplyBy(tileSize);
-        //+/-1 in order to be on the tile
-        nwPoint.x+=1;
-        nwPoint.y-=1;
-        sePoint = nwPoint.add(new L.Point(tileSize, tileSize));
-        nw = crs.project(map.unproject(nwPoint, zoom));
-        se = crs.project(map.unproject(sePoint, zoom));
-        tilewidth = se.x-nw.x;
-        zoom=map.getZoom();
-        ident = this.matrixIds[zoom].identifier;
-        X0 = this.matrixIds[zoom].topLeftCorner.lng;
-        Y0 = this.matrixIds[zoom].topLeftCorner.lat;
-        tilecol=Math.floor((nw.x-X0)/tilewidth);
-        tilerow=-Math.floor((nw.y-Y0)/tilewidth);
-        url = L.Util.template(this._url, {s: this._getSubdomain(tilePoint)});
+    getTileUrl: function (coords) { // (Point, Number) -> String
+        var tileBounds = this._tileCoordsToBounds(coords),
+            nw = this._crs.project(tileBounds.getNorthWest()),
+            se = this._crs.project(tileBounds.getSouthEast());
+        var zoom = this._map.getZoom();
+        zoom = this._tileZoom;
+        var tilewidth = se.x-nw.x;
+        var ident = this.matrixIds[zoom].identifier;
+        var X0 = this.matrixIds[zoom].topLeftCorner.lng;
+        var Y0 = this.matrixIds[zoom].topLeftCorner.lat;
+        var tilecol=Math.floor((nw.x-X0)/tilewidth);
+        var tilerow=-Math.floor((nw.y-Y0)/tilewidth);
+        var url = L.Util.template(this._url, {s: this._getSubdomain(coords)});
         return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilerow +"&tilecol=" + tilecol ;
     },
 
