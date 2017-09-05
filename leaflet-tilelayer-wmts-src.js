@@ -46,12 +46,13 @@ L.TileLayer.WMTS = L.TileLayer.extend({
         tilewidth = se.x-nw.x;
         //zoom = this._map.getZoom();
         var ident = this.matrixIds[zoom].identifier;
+        var tilematrix = this.wmtsParams.tilematrixSet + ":" + ident;
         var X0 = this.matrixIds[zoom].topLeftCorner.lng;
         var Y0 = this.matrixIds[zoom].topLeftCorner.lat;
         var tilecol=Math.floor((nw.x-X0)/tilewidth);
         var tilerow=-Math.floor((nw.y-Y0)/tilewidth);
         var url = L.Util.template(this._url, {s: this._getSubdomain(coords)});
-        return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilerow +"&tilecol=" + tilecol ;
+        return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + tilematrix + "&tilerow=" + tilerow +"&tilecol=" + tilecol;
         /*
         var tileBounds = this._tileCoordsToBounds(coords);
         var zoom = this._tileZoom;
