@@ -25,7 +25,7 @@ L.TileLayer.WMTS = L.TileLayer.extend({
         }
         for (var i in lOptions) {
             // all keys that are not TileLayer options go to WMTS params
-            if (defaultWmtsParams.hasOwnProperty(i) && i!="matrixIds") {
+            if (wmtsParams.hasOwnProperty(i) && i!="matrixIds") {
                 wmtsParams[i] = options[i];
             }
         }
