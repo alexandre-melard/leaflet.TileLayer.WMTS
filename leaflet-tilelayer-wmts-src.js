@@ -1,12 +1,12 @@
 L.TileLayer.WMTS = L.TileLayer.extend({
     defaultWmtsParams: {
         service: 'WMTS',
-        request: 'GetTile',
-        version: '1.0.0',
-        layers: '',
-        styles: '',
-        tilematrixSet: '',
-        format: 'image/jpeg'
+		request: 'GetTile',
+		version: '1.0.0',
+		layer: '',
+		style: '',
+		tilematrixset: '',
+		format: 'image/jpeg'
     },
 
     initialize: function (url, options) { // (String, Object)
@@ -24,10 +24,10 @@ L.TileLayer.WMTS = L.TileLayer.extend({
             wmtsParams.width = wmtsParams.height = tileSize;
         }
         for (var i in lOptions) {
-            // all keys that are not TileLayer options go to WMTS params
+            // all keys that are in defaultWmtsParams options go to WMTS params
             if (wmtsParams.hasOwnProperty(i) && i!="matrixIds") {
-                wmtsParams[i] = options[i];
-            }
+				wmtsParams[i] = lOptions[i];
+			}
         }
         this.wmtsParams = wmtsParams;
         this.matrixIds = options.matrixIds||this.getDefaultMatrix();
